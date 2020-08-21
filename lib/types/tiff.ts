@@ -104,11 +104,12 @@ export const TIFF: IImage = {
 
     const width = tags[256]
     const height = tags[257]
+    const orientation = (tags.hasOwnProperty(274)) ? tags[274] : 0
 
     if (!width || !height) {
       throw new TypeError('Invalid Tiff. Missing tags')
     }
 
-    return { height, width }
+    return { height, width, orientation}
   }
 }
